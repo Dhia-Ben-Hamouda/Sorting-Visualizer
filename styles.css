@@ -3,7 +3,6 @@
 *{
   margin:0px;
   padding:0px;
-  transition: .5s;
 }
 
 body{
@@ -47,6 +46,7 @@ body{
   margin-left:1rem;
   border-radius: 5px;
   cursor: pointer;
+  transition: .5s;
 }
 
 .right button{
@@ -58,6 +58,7 @@ body{
   margin-left:.5rem;
   border-radius: 5px;
   cursor: pointer;
+  transition: .5s;
 }
 
 button:hover{
@@ -67,5 +68,5 @@ button:hover{
 .bar{
   width:15px;
   border: 1px solid black;
-  background:linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.2) )
+  background:linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )
 }
