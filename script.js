@@ -2,7 +2,7 @@ const container = document.querySelector(".container");
 const algorithm = document.querySelector(".algorithm");
 const startBtn = document.querySelector(".start");
 const btns = document.querySelectorAll(".btn");
-const numberOfBars = 65;
+const numberOfBars = 80;
 const heights = [];
 
 
@@ -15,13 +15,12 @@ btns.forEach((btn) => {
 startBtn.addEventListener("click", () => {
   switch (algorithm.innerHTML) {
     case "Insertion Sort":
+      insertionSort();
       break;
     case "Selection Sort":
       break;
     case "Bubble Sort":
       bubbleSort();
-      break;
-    case "Merge Sort":
       break;
     default:
       break;
@@ -30,10 +29,14 @@ startBtn.addEventListener("click", () => {
 
 async function bubbleSort() {
   let bars = document.getElementsByClassName("bar");
-  for (let i = 0; i < heights.length; i++) {
-    for (let j = 0; j < heights.length - i - 1; j++) {
-      for (k = 0; k < heights.length; k++) {
-        if (k != j && k != j + 1 && k < heights.length - i) {
+  for (let i = 0; i < heights.length; i++) 
+  {
+    for (let j = 0; j < heights.length - i - 1; j++)
+    {
+      for (k = 0; k < heights.length; k++) 
+      {
+        if (k != j && k != j + 1 && k < heights.length - i) 
+        {
           bars[k].style.background = "linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )"
         }
       }
@@ -48,12 +51,11 @@ async function bubbleSort() {
 
         bars[j].style.background = "linear-gradient(45deg , rgb(255, 0, 0) , rgba(255, 0, 0 , 0.75) )";
         bars[j + 1].style.background = "linear-gradient(45deg , rgb(255, 0, 0) , rgba(255, 0, 0 , 0.75) )";
-
-        if (j + 1 == heights.length - 1 - i) {
-          bars[j + 1].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
-        }
       }
-      await sleep(15);
+      if (j + 1 == heights.length - 1 - i) {
+        bars[j + 1].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
+      }
+      await sleep(10);
     }
   }
   for (let i = 0; i < heights.length; i++) {
@@ -62,6 +64,7 @@ async function bubbleSort() {
 }
 
 async function insertionSort() {
+  let bars = document.getElementsByClassName("bar");
   let j;
   let v;
 
@@ -72,9 +75,13 @@ async function insertionSort() {
     while (j > 0 && v < heights[j-1]) 
     {
       heights[j] = heights[j-1];
+      bars[j].style.height = bars[j-1].style.height;
+      bars[j].style.background="red";
       j--;
+      await sleep(25);
     }
     heights[j] = v;
+    bars[j].style.height = v;
   }
 }
 
