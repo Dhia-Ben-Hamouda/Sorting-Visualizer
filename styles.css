@@ -15,7 +15,6 @@ body{
   min-height: 80vh;
   padding:1rem 7vw;
   display: flex;
-  justify-content: center;
 }
 
 .header{
@@ -66,7 +65,6 @@ button:hover{
 }
 
 .bar{
-  height:500px;
   width:15px;
   border: 1px solid black;
   background:linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.2) )
