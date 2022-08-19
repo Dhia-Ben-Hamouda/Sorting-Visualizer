@@ -72,3 +72,45 @@ button:hover{
   border: 1px solid black;
   background:linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )
 }
+
+@media(max-width:640px)
+{
+  .header{
+    flex-direction: column;
+  }
+
+  .container{
+    min-height: 0px;
+  }
+
+  .left h2{
+    font-size: 12px;
+  }
+
+  .left h1{
+    font-size: 14px;
+  }
+
+  .left{
+    margin-bottom: 1rem;
+  }
+
+  .right{
+    display: flex;
+  }
+
+  .left button{
+    padding:.5rem 1rem;
+    margin-left:1rem;
+    border-radius: 5px;
+  }
+
+  .right button{
+    padding:.5rem 1rem;
+    margin-left:.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+    font-size: 10px;
+  }
+}

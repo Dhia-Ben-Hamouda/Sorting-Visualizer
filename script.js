@@ -6,11 +6,15 @@ const numberOfBars = 80;
 const heights = [];
 
 
+
+
 btns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     algorithm.innerHTML = e.target.value;
   })
 })
+
+
 
 startBtn.addEventListener("click", () => {
   switch (algorithm.innerHTML) {
@@ -27,7 +31,12 @@ startBtn.addEventListener("click", () => {
   }
 })
 
-async function bubbleSort() {
+
+
+
+
+async function bubbleSort() 
+{
   let bars = document.getElementsByClassName("bar");
   for (let i = 0; i < heights.length; i++) 
   {
@@ -37,7 +46,7 @@ async function bubbleSort() {
       {
         if (k != j && k != j + 1 && k < heights.length - i) 
         {
-          bars[k].style.background = "linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )"
+          bars[k].style.background = "linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )";
         }
       }
 
@@ -58,12 +67,18 @@ async function bubbleSort() {
       await sleep(10);
     }
   }
-  for (let i = 0; i < heights.length; i++) {
+  for (let i = 0; i < heights.length; i++) 
+  {
     bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
   }
 }
 
-async function insertionSort() {
+
+
+
+
+async function insertionSort() 
+{
   let bars = document.getElementsByClassName("bar");
   let j;
   let v;
@@ -76,9 +91,18 @@ async function insertionSort() {
     while(  j>0  && v < heights[j-1] )
     {
       heights[j] = heights[j-1];
+      bars[j].style.background = "red";
       bars[j].style.height = bars[j-1].style.height;
       j--;
       await sleep(10);
+
+      for(k=0;k<heights.length;k++)
+      {
+        if(k != j)
+        {
+          bars[k].style.background = "linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )";
+        }
+      }
     }
     heights[j]=v;
     bars[j].style.height = `${heights[j]}px`;
@@ -88,12 +112,27 @@ async function insertionSort() {
   {
     bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
   }
-
 }
+
+
+
+
+async function selectionSort()
+{
+  
+}
+
+
+
+
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
+
+
+
+
 
 function exist(arr, num) {
   for (let i = 0; i < arr.length; i++) {
@@ -103,6 +142,11 @@ function exist(arr, num) {
   }
   return false;
 }
+
+
+
+
+
 
 function fillArray() {
   for (let i = 0; i < numberOfBars; i++) {
@@ -116,6 +160,11 @@ function fillArray() {
   }
 }
 
+
+
+
+
+
 function renderBars(heights) {
   for (let i = 0; i < heights.length; i++) {
     let bar = document.createElement("div");
@@ -125,9 +174,16 @@ function renderBars(heights) {
   }
 }
 
+
+
+
+
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
+
+
+
 
 fillArray();
 renderBars(heights);
