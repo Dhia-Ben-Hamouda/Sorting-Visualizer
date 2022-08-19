@@ -68,21 +68,27 @@ async function insertionSort() {
   let j;
   let v;
 
-  for (let i = 1; i < heights.length; i++) 
+  for(let i=1;i<heights.length;i++)
   {
-    j = i;
-    v = heights[i];
-    while (j > 0 && v < heights[j-1]) 
+    j=i;
+    v=heights[i];
+
+    while(  j>0  && v < heights[j-1] )
     {
       heights[j] = heights[j-1];
       bars[j].style.height = bars[j-1].style.height;
-      bars[j].style.background="red";
       j--;
-      await sleep(25);
+      await sleep(10);
     }
-    heights[j] = v;
-    bars[j].style.height = v;
+    heights[j]=v;
+    bars[j].style.height = `${heights[j]}px`;
   }
+
+  for(let i=0;i<heights.length;i++)
+  {
+    bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
+  }
+
 }
 
 function randomNumber(min, max) {
