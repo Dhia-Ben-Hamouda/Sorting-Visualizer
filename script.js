@@ -182,7 +182,7 @@ function fillArray() {
     while (true) {
       if(window.innerWidth < 650)
       {
-        var random = randomNumber(100, 500);
+        var random = randomNumber(75, 425);
       }
       else
       {
