@@ -17,6 +17,11 @@ body{
   justify-content: center;
 }
 
+.icon{
+  margin-left:1rem;
+  cursor: pointer;
+}
+
 .header{
   padding:1rem 7vw;
   display: flex;
@@ -112,5 +117,9 @@ button:hover{
     cursor: pointer;
     transition: .5s;
     font-size: 10px;
+  }
+
+  button:hover{
+    transform:scale(1);
   }
 }

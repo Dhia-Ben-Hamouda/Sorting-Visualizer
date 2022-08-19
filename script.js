@@ -2,11 +2,11 @@ const container = document.querySelector(".container");
 const algorithm = document.querySelector(".algorithm");
 const startBtn = document.querySelector(".start");
 const btns = document.querySelectorAll(".btn");
+const icon = document.querySelector(".icon");
 const numberOfBars = 80;
 const heights = [];
 
-
-
+// event listeners for buttons
 
 btns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -14,14 +14,13 @@ btns.forEach((btn) => {
   })
 })
 
-
-
 startBtn.addEventListener("click", () => {
   switch (algorithm.innerHTML) {
     case "Insertion Sort":
       insertionSort();
       break;
     case "Selection Sort":
+      selectionSort();
       break;
     case "Bubble Sort":
       bubbleSort();
@@ -31,9 +30,12 @@ startBtn.addEventListener("click", () => {
   }
 })
 
+icon.addEventListener("click" , ()=>{
+  fillArray();
+  renderBars(heights);
+})
 
-
-
+// bubble sort implementation
 
 async function bubbleSort() 
 {
@@ -73,9 +75,7 @@ async function bubbleSort()
   }
 }
 
-
-
-
+// insertion sort implementation
 
 async function insertionSort() 
 {
@@ -94,7 +94,7 @@ async function insertionSort()
       bars[j].style.background = "red";
       bars[j].style.height = bars[j-1].style.height;
       j--;
-      await sleep(10);
+      await sleep(25);
 
       for(k=0;k<heights.length;k++)
       {
@@ -114,25 +114,52 @@ async function insertionSort()
   }
 }
 
-
-
+// selection sort implementation
 
 async function selectionSort()
 {
-  
+  let aux;
+  let min;
+  let bars = document.getElementsByClassName("bar");
+
+  for(let i=0;i<heights.length-1;i++)
+  {
+    min = i;
+    for(let j=i+1;j<heights.length;j++)
+    {
+      if(heights[j] < heights[min])
+      {
+        for(let k=0;k<heights.length;k++)
+        {
+          bars[k].style.background = "linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )";
+        }
+        min = j;
+        bars[min].style.background="red";
+      }
+    }
+    aux = heights[min];
+    heights[min]=heights[i];
+    heights[i]=aux;
+
+    bars[min].style.height = `${heights[min]}px`;
+    bars[i].style.height = `${heights[i]}px`;
+
+    await sleep(100);
+  }
+
+  for(let i=0;i<heights.length;i++)
+  {
+    bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
+  }
 }
 
-
-
-
+// function to generate a random number 
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-
-
-
+// function to check wheather a number exists in an array
 
 function exist(arr, num) {
   for (let i = 0; i < arr.length; i++) {
@@ -143,12 +170,14 @@ function exist(arr, num) {
   return false;
 }
 
-
-
-
-
+// function to fill array with random numbers
 
 function fillArray() {
+  while(heights.length > 0 )
+  [
+    heights.pop()
+  ]
+
   for (let i = 0; i < numberOfBars; i++) {
     while (true) {
       var random = randomNumber(100, 550);
@@ -160,12 +189,10 @@ function fillArray() {
   }
 }
 
-
-
-
-
+// function to render bars to the screen
 
 function renderBars(heights) {
+  container.innerHTML = "";
   for (let i = 0; i < heights.length; i++) {
     let bar = document.createElement("div");
     bar.classList.add("bar");
@@ -174,17 +201,11 @@ function renderBars(heights) {
   }
 }
 
-
-
-
+// sleep function
 
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-
-
-
 fillArray();
 renderBars(heights);
-
