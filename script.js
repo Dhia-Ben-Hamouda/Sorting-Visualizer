@@ -3,8 +3,13 @@ const algorithm = document.querySelector(".algorithm");
 const startBtn = document.querySelector(".start");
 const btns = document.querySelectorAll(".btn");
 const icon = document.querySelector(".icon");
-const numberOfBars = 80;
+let numberOfBars = 80;
 const heights = [];
+
+if(window.innerWidth < 650)
+{
+  numberOfBars = 50;
+}
 
 // event listeners for buttons
 
@@ -182,7 +187,7 @@ function fillArray() {
     while (true) {
       if(window.innerWidth < 650)
       {
-        var random = randomNumber(75, 425);
+        var random = randomNumber(75, 400);
       }
       else
       {
