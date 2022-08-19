@@ -180,7 +180,15 @@ function fillArray() {
 
   for (let i = 0; i < numberOfBars; i++) {
     while (true) {
-      var random = randomNumber(100, 550);
+      if(window.innerWidth < 650)
+      {
+        var random = randomNumber(100, 500);
+      }
+      else
+      {
+        var random = randomNumber(100, 550);
+      }
+      
       if (!exist(heights, random)) {
         break;
       }

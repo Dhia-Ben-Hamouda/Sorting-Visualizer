@@ -80,6 +80,7 @@ button:hover{
 
 @media(max-width:640px)
 {
+
   .header{
     flex-direction: column;
   }
