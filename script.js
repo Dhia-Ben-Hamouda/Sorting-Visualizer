@@ -20,6 +20,7 @@ btns.forEach((btn) => {
 })
 
 startBtn.addEventListener("click", () => {
+  disableButtons();
   switch (algorithm.innerHTML) {
     case "Insertion Sort":
       insertionSort();
@@ -36,6 +37,21 @@ startBtn.addEventListener("click", () => {
 })
 
 icon.addEventListener("click" , ()=>{
+  let btns = Array.from( document.getElementsByTagName("button") );
+  let test = 1;
+
+  btns.forEach((btn)=>{
+    if(btn.disabled === true)
+    {
+      test = 0;
+    }
+  })
+  
+  if(test === 0)
+  {
+    return;
+  }
+
   fillArray();
   renderBars(heights);
 })
@@ -78,6 +94,7 @@ async function bubbleSort()
   {
     bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
   }
+  enableButtons();
 }
 
 // insertion sort implementation
@@ -117,6 +134,7 @@ async function insertionSort()
   {
     bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
   }
+  enableButtons();
 }
 
 // selection sort implementation
@@ -156,6 +174,7 @@ async function selectionSort()
   {
     bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
   }
+  enableButtons();
 }
 
 // function to generate a random number 
@@ -212,6 +231,28 @@ function renderBars(heights) {
     bar.style.height = `${heights[i]}px`
     container.appendChild(bar);
   }
+}
+
+// function to disable buttons
+
+function disableButtons()
+{
+  let btns = Array.from( document.getElementsByTagName("button") );
+
+  btns.forEach((btn)=>{
+    btn.disabled = true;
+  })
+}
+
+// function to enable buttons
+
+function enableButtons()
+{
+  let btns = Array.from( document.getElementsByTagName("button") );
+
+  btns.forEach((btn)=>{
+    btn.disabled = false;
+  })
 }
 
 // sleep function
