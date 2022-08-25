@@ -154,7 +154,10 @@ async function selectionSort()
       {
         for(let k=0;k<heights.length;k++)
         {
-          bars[k].style.background = "linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )";
+          if(k>i)
+          {
+            bars[k].style.background = "linear-gradient(45deg , rgb(30, 144, 255) , rgba(30, 144, 255 , 0.75) )";
+          }
         }
         min = j;
         bars[min].style.background="red";
@@ -166,6 +169,7 @@ async function selectionSort()
 
     bars[min].style.height = `${heights[min]}px`;
     bars[i].style.height = `${heights[i]}px`;
+    bars[i].style.background = "linear-gradient(45deg , rgb(0, 255, 0) , rgba(0, 255, 0 , 0.75) )";
 
     await sleep(100);
   }
